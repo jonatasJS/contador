@@ -1,0 +1,137 @@
+body {
+  background: linear-gradient(90deg, #F2F1EF 10%, #ecf0f1 90%);
+  overflow-x: hidden;
+}
+
+body .highcharts-range-selector-group {
+	display: none !important;
+}
+
+/*.AdSense {
+	background-color: #8e44ad;
+	min-height: 100px;
+}
+
+.AdSense h2 {
+	color: #9b59b6;
+}
+
+.AdSense i {
+	color: #ecf0f1;
+}
+
+.AdSense p {
+	color: #ecf0f1;
+}*/
+
+.input-nomecanal {
+	width: 100% !important;
+	border: 1px solid #ecf0f1;
+	height: 50px;
+	font-size: 30px;
+	text-align: center;
+}
+
+.btn-buscar {
+	font-size: 20px;
+	cursor: pointer;	
+	background: linear-gradient(-90deg, #2980b9, #9b59b6);
+	color: white;
+	border-radius: 100px;
+}
+
+.conteudo-capa-desktop {
+    min-height: 170px; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.conteudo-capa-mobile {
+	display: none;
+    min-height: 90px; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media(max-width: 768px){
+	.conteudo-capa-desktop {
+		display: none;
+	}
+	.conteudo-capa-mobile {
+		display: block;
+	}
+}
+
+@media(min-width: 768px){
+	.conteudo-capa-desktop {
+		display: block;
+	}
+	.conteudo-capa-mobile {
+		display: none;
+	}
+}
+
+.conteudo-dados {
+	background: white;
+	padding: 50px 25px 0 25px;
+}
+
+.conteudo-dados i {
+	color: #e74c3c;
+	cursor: pointer;
+}
+
+.conteudo-dados i:hover {
+	color: #c0392b;
+}
+
+.conteudo-pesquisa {
+	background-color: transparent;
+}
+
+.btn-sucesso-modal {
+	cursor: pointer;	
+	background: linear-gradient(-90deg, #27ae60, #2ecc71);	
+	color: white
+}
+
+.btn-fixo {
+	position: fixed;
+	bottom: 30px;
+	right: 10px;
+	cursor: pointer;
+	z-index: 9999;
+	background-color: #2980b9;
+	color: #ecf0f1;
+}
+
+.btn-fixo:hover {
+	background-color: #3498db
+}
+
+@media(max-width: 768px){
+	.display-1 {
+		font-size: 3rem;
+	}
+}
+
+.loading {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 200px;
+	height: 200px;
+	margin-top: -100px; 
+	margin-left: -100px;
+}
+
+.rodape {
+	background: linear-gradient(90deg, #2980b9 10%, #8e44ad 90%);
+	min-height: 50px;
+}
+
+.rodape p{
+	color: white;
+}

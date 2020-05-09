@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contador de inscritos</title>
+	<meta name="author" content="Wesley Santos <wessleysanttos@live.com>">
+	<meta name="description" content="Acompanhe em tempo real a quantidade de inscritos, número de views e a quantidade de vídeos de um canal do YouTube, contador em tempo real com um gráfico leve e prático.">
+	<meta name="keywords" content="contador de inscritos, youtube contador, contador, inscritos, youtube, tempo real, contador de views">
+	<meta name="theme-color" content="#2980b9">
+
+	<script src="https://use.fontawesome.com/5116fbf4e6.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Google Analytics 
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-XXXXX-Y', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+	
+	    google_ad_client: "ca-pub-5593915309329672",
+	    enable_page_level_ads: true
+	  name="google-site-verification"
+	 End Google Analytics -->
+
+	
+</head>
+<body>
+<div id="div-loading" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; overflow: hidden; background-color: #ecf0f1">
+	<img src="imagem/loading.gif" class="loading">
+</div>
+
+<button data-toggle="tooltip" data-placement="left" title="Realizar nova pesquisa" class="btn btn-fixo d-none" id="btn-refresh"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+
+<div class="container" id="conteudo">
+	<div class="row mb-3">
+		<!-- dinheiro -->
+		<ins class="adsbygoogle"
+			style="display:block"
+			data-ad-client="ca-pub-5593915309329672"
+			data-ad-slot="8416323408"
+			data-ad-format="auto"
+			data-full-width-responsive="true"></ins>
+		
+			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<script>
+			  ( adsbygoogle = window.adsbygoogle || []).push({
+				google_ad_client: "ca-pub-5593915309329672",
+				enable_page_level_ads: true
+			  });
+			  console.log('adsbygoogle2', adsbygoogle);
+			</script>
+
+	</div>	
+
+	<div id="conteudo-formulario"> 
+		<div class="row align-items-center justify-content-center" style="margin-top: 10%">
+			<div class="col-md-8 col-sm-8 col-lg-8 col-xl-8">
+				<h2 class="text-center text-uppercase font-weight-bold">Contador de inscritos </h2>
+				<p style="line-height: 1.35;" class="text-center">Acompanhe em <b>tempo real</b> a quantidade de inscritos de um canal do YouTube.</p>
+				<div class="row">
+					<div class="col-12">
+						<input type="text" class="form-control input-nomecanal" id="nome-canal" placeholder="Digite o nome do canal">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row align-items-center justify-content-center mt-2">
+			<div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 text-center">
+				<button id="buscar" class="btn btn-block btn-buscar">
+					<span>Pesquisar >></span>
+				</button>
+				<hr>
+				<p class="text-center">
+					acesse 
+					<i style="color:#e74c3c" class="fa fa-youtube-play" aria-hidden="true"></i>
+					<a class="font-weight-bold" style="color:#2980b9" target="_blank" href="https://www.youtube.com/channel/UCsqTzd_ZgxaiyTwHsA7fNKA">
+						/StoreTutorsHD
+					</a>
+				</p>
+				<a style="cursor: pointer;" href="#" class="text-center">
+					<img height="50" src="imagem/google-play.png">
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="conteudo-pesquisa" class="conteudo-pesquisa d-none">
+		<div class="row bg-white">
+			<div class="col-md-12 col-sm-12 col-lg-12 col-xl-12" style="top:15px">
+				<div id="conteudo-capa-desktop" class="conteudo-capa-desktop"></div>
+				<div id="conteudo-capa-mobile" class="conteudo-capa-mobile"></div>
+			</div>
+		</div>				
+		<div class="row conteudo-dados">
+			<div class="col-md-6 col-sm-12 col-lg-6 col-xl-6">
+				<div class="container">
+					<div class="row">
+					  <div class="col-md-4 col-sm-12 col-lg-4 col-xl-4 text-center">
+						  <img class="rounded-circle img-fluid" id="logo">
+					  </div>
+					  <div class="col-md-6 col-sm-12 col-lg-6 col-xl-6">
+					  	<p class="mb-0 lead"><span id="descricao"></span></p>
+					    <div class="container mt-1">
+						  <div class="row text-center">
+						    <div class="col-sm" id="total-video">
+						     	<i class="fa fa-video-camera" aria-hidden="true" data-toggle="popover" title="Vídeos" data-content="4656545"></i> 
+					    		<span></span>
+						    </div>
+						    <div class="col-sm" id="total-view">
+						    	<i class="fa fa-eye" aria-hidden="true" data-toggle="popover" title="Views" data-content="4656545"></i>
+						    	<span></span>
+						    </div>
+						    <div class="col-sm">
+						    	<a id="direcionar-canal" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a><br>
+						    	<small>Ir para o canal</small>
+						    </div>
+						  </div>
+						</div>
+					   </div>
+					 </div>
+				 </div> 				
+			</div>
+
+			<div class="col-md-6 col-sm-12 col-lg-6 col-xl-6 text-center">
+				<h4 class="text-uppercase">Inscritos</h4>
+				<p><h1 id="inscrito" class="display-1 font-weight-bold"></h1></p>
+			</div>
+		</div>
+
+		<div class="row mt-4 bg-white">
+			<div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
+				<div id="container" style="height: 400px; min-width: 310px"></div>
+			</div>
+		</div>
+	</div>	
+</div>
+
+<div class="modal fade" id="modal-app" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><b>OBA!</b> Conheça o nosso aplicativo</h5>
+      </div>
+      <div class="modal-body">
+        Está usando um dispositivo Android? Então não perca tempo e conheça o nosso aplicativo que já esta disponível na Google Play!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não, obrigado</button>
+        <a class="btn btn-sucesso-modal" href="#">Ir para Google Play</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://apis.google.com/js/api.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
+
